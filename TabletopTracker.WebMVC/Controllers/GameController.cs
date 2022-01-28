@@ -49,6 +49,14 @@ namespace TabletopTracker.WebMVC.Controllers
             return View(model);
         }
 
+        public ActionResult Details(int id)
+        {
+            var svc = CreateGameService();
+            var model = svc.GetGameById(id);
+
+            return View(model);
+        }
+
         private GameService CreateGameService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());

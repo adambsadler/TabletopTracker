@@ -43,12 +43,8 @@ namespace TabletopTracker.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
-                    ctx
-                        .Games
-                        .Where(e => e.OwnerId == _userId)
-                        .Select(
-                            e =>
-                                new GameListItem
+                    ctx.Games.Where(e => e.OwnerId == _userId)
+                        .Select(e => new GameListItem
                                 {
                                     GameId = e.GameId,
                                     Title = e.Title,
@@ -62,6 +58,26 @@ namespace TabletopTracker.Services
                          );
 
                 return query.ToArray();
+            }
+        }
+
+        public GameDetail GetGameById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx.Games.Single(e => e.GameId == id && e.OwnerId == _userId);
+                return new GameDetail
+                {
+                    GameId = entity.GameId,
+                    Title = entity.Title,
+                    // CategoryName = entity.Category.Name,
+                    // PublisherName = entity.Publisher.Name,
+                    MinPlayers = entity.MinPlayers,
+                    MaxPlayers = entity.MaxPlayers,
+                    HavePlayed = entity.HavePlayed,
+                    Rating = entity.Rating
+                };
             }
         }
     }
