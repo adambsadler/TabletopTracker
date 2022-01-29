@@ -54,6 +54,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Category\CategoryCreate.cs" />
+    <Compile Include="Category\CategoryDetail.cs" />
+    <Compile Include="Category\CategoryEdit.cs" />
     <Compile Include="Category\CategoryListItem.cs" />
     <Compile Include="Game\GameCreate.cs" />
     <Compile Include="Game\GameDetail.cs" />

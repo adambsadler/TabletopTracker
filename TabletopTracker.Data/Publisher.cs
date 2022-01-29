@@ -12,7 +12,7 @@ namespace TabletopTracker.Data
         [Key]
         public int PublisherId { get; set; }
         [Required]
-        public Guid guid { get; set; }
+        public Guid OwnerId { get; set; }
         [Required]
         [MinLength(2, ErrorMessage = "The publisher name must contain at least 2 characters.")]
         [MaxLength(50, ErrorMessage = "The publisher name cannot contain more than 50 characters.")]
