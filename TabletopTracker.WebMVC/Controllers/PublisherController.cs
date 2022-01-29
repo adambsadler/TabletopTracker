@@ -4,19 +4,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using TabletopTracker.Models.Category;
+using TabletopTracker.Models.Publisher;
 using TabletopTracker.Services;
 
 namespace TabletopTracker.WebMVC.Controllers
 {
     [Authorize]
-    public class CategoryController : Controller
+    public class PublisherController : Controller
     {
-        // GET: Category
+        // GET: Publisher
         public ActionResult Index()
         {
-            var service = CreateCategoryService();
-            var model = service.GetCategories();
+            var service = CreatePublisherService();
+            var model = service.GetPublishers();
             return View(model);
         }
 
@@ -28,40 +28,40 @@ namespace TabletopTracker.WebMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CategoryCreate model)
+        public ActionResult Create(PublisherCreate model)
         {
             if (!ModelState.IsValid) return View(model);
 
-            var service = CreateCategoryService();
+            var service = CreatePublisherService();
 
-            if (service.CreateCategory(model))
+            if (service.CreatePublisher(model))
             {
-                TempData["SaveResult"] = "Your category was created successfully.";
+                TempData["SaveResult"] = "The publisher was created successfully.";
                 return RedirectToAction("Index");
             }
 
-            ModelState.AddModelError("", "Category could not be created.");
+            ModelState.AddModelError("", "Publisher could not be created.");
 
             return View(model);
         }
 
         public ActionResult Details(int id)
         {
-            var svc = CreateCategoryService();
-            var model = svc.GetCategoryById(id);
+            var svc = CreatePublisherService();
+            var model = svc.GetPublisherById(id);
 
             return View(model);
         }
 
         public ActionResult Edit(int id)
         {
-            var service = CreateCategoryService();
-            var detail = service.GetCategoryById(id);
-            var model = new CategoryEdit
+            var service = CreatePublisherService();
+            var detail = service.GetPublisherById(id);
+            var model = new PublisherEdit
             {
-                CategoryId = detail.CategoryId,
+                PublisherId = detail.PublisherId,
                 Name = detail.Name,
-                Description = detail.Description
+                Website = detail.Website
             };
 
             return View(model);
@@ -69,33 +69,33 @@ namespace TabletopTracker.WebMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, CategoryEdit model)
+        public ActionResult Edit(int id, PublisherEdit model)
         {
             if (!ModelState.IsValid) return View(model);
 
-            if (model.CategoryId != id)
+            if (model.PublisherId != id)
             {
                 ModelState.AddModelError("", "Id Mismatch");
                 return View(model);
             }
 
-            var service = CreateCategoryService();
+            var service = CreatePublisherService();
 
-            if (service.UpdateCategory(model))
+            if (service.UpdatePublisher(model))
             {
-                TempData["SaveResult"] = "Your category information was updated.";
+                TempData["SaveResult"] = "Publisher information was updated.";
                 return RedirectToAction("Index");
             }
 
-            ModelState.AddModelError("", "Your category information could not be updated.");
+            ModelState.AddModelError("", "Publisher information could not be updated.");
             return View();
         }
 
         [ActionName("Delete")]
         public ActionResult Delete(int id)
         {
-            var svc = CreateCategoryService();
-            var model = svc.GetCategoryById(id);
+            var svc = CreatePublisherService();
+            var model = svc.GetPublisherById(id);
 
             return View(model);
         }
@@ -105,19 +105,19 @@ namespace TabletopTracker.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeletePost(int id)
         {
-            var service = CreateCategoryService();
+            var service = CreatePublisherService();
 
-            service.DeleteCategory(id);
+            service.DeletePublisher(id);
 
-            TempData["SaveResult"] = "Your category was deleted.";
+            TempData["SaveResult"] = "This publisher was deleted.";
 
             return RedirectToAction("Index");
         }
 
-        private CategoryService CreateCategoryService()
+        private PublisherService CreatePublisherService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new CategoryService(userId);
+            var service = new PublisherService(userId);
             return service;
         }
     }

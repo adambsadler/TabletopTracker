@@ -63,6 +63,9 @@
     <Compile Include="Game\GameEdit.cs" />
     <Compile Include="Game\GameListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Publisher\PublisherCreate.cs" />
+    <Compile Include="Publisher\PublisherDetail.cs" />
+    <Compile Include="Publisher\PublisherEdit.cs" />
     <Compile Include="Publisher\PublisherListItem.cs" />
   </ItemGroup>
   <ItemGroup>
