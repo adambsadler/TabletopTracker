@@ -10,14 +10,7 @@
     <h4>GameDetail</h4>
     <hr />
     <dl class="dl-horizontal">
-        @*Not sure if I want to display the ID to user*@
-        @*<dt>
-            @Html.DisplayNameFor(model => model.GameId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GameId)
-        </dd>*@
+        @Html.HiddenFor(model => model.GameId)
 
         <dt>
             @Html.DisplayNameFor(model => model.Title)

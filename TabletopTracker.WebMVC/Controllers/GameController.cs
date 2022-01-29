@@ -61,6 +61,8 @@ namespace TabletopTracker.WebMVC.Controllers
         {
             var service = CreateGameService();
             var detail = service.GetGameById(id);
+            ViewBag.Publishers = new SelectList(GetPublishers(), "PublisherId", "Name");
+            ViewBag.Categories = new SelectList(GetCategories(), "CategoryId", "Name");
             var model = new GameEdit
             {
                 GameId = detail.GameId,
@@ -74,6 +76,30 @@ namespace TabletopTracker.WebMVC.Controllers
             };
 
             return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, GameEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            if(model.GameId != id)
+            {
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(model);
+            }
+
+            var service = CreateGameService();
+
+            if(service.UpdateGame(model))
+            {
+                TempData["SaveResult"] = "Your game information was updated.";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Your game information could not be updated.");
+            return View();
         }
 
         private GameService CreateGameService()
