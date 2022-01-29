@@ -71,13 +71,31 @@ namespace TabletopTracker.Services
                 {
                     GameId = entity.GameId,
                     Title = entity.Title,
-                    // CategoryName = entity.Category.Name,
-                    // PublisherName = entity.Publisher.Name,
+                    CategoryId = entity.CategoryId,
+                    PublisherId = entity.PublisherId,
                     MinPlayers = entity.MinPlayers,
                     MaxPlayers = entity.MaxPlayers,
                     HavePlayed = entity.HavePlayed,
                     Rating = entity.Rating
                 };
+            }
+        }
+
+        public bool UpdateGame(GameEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Games.Single(e => e.GameId == model.GameId && e.OwnerId == _userId);
+
+                entity.Title = model.Title;
+                entity.PublisherId = model.PublisherId;
+                entity.CategoryId = model.CategoryId;
+                entity.MinPlayers = model.MinPlayers;
+                entity.MaxPlayers = model.MaxPlayers;
+                entity.HavePlayed = model.HavePlayed;
+                entity.Rating = model.Rating;
+
+                return ctx.SaveChanges() == 1;
             }
         }
     }
