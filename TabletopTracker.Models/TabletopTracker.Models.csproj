@@ -67,6 +67,10 @@
     <Compile Include="Publisher\PublisherDetail.cs" />
     <Compile Include="Publisher\PublisherEdit.cs" />
     <Compile Include="Publisher\PublisherListItem.cs" />
+    <Compile Include="Session\SessionCreate.cs" />
+    <Compile Include="Session\SessionDetail.cs" />
+    <Compile Include="Session\SessionEdit.cs" />
+    <Compile Include="Session\SessionListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

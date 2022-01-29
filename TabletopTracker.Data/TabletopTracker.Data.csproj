@@ -65,6 +65,10 @@
     <Compile Include="Migrations\202201291609494_ModifiedCategory.Designer.cs">
       <DependentUpon>202201291609494_ModifiedCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202201292016294_SessionAdded.cs" />
+    <Compile Include="Migrations\202201292016294_SessionAdded.Designer.cs">
+      <DependentUpon>202201292016294_SessionAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Publisher.cs" />
@@ -80,6 +84,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202201291609494_ModifiedCategory.resx">
       <DependentUpon>202201291609494_ModifiedCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201292016294_SessionAdded.resx">
+      <DependentUpon>202201292016294_SessionAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

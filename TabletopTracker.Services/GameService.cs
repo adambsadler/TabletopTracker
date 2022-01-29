@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TabletopTracker.Data;
 using TabletopTracker.Models.Game;
+using TabletopTracker.Models.Session;
 
 namespace TabletopTracker.Services
 {
@@ -104,6 +105,16 @@ namespace TabletopTracker.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = ctx.Games.Single(e => e.GameId == gameId && e.OwnerId == _userId);
+                var sessions = new SessionService(_userId).GetSessions();
+
+                foreach (SessionListItem session in sessions)
+                {
+                    var affectedSession = ctx.Sessions.Single(a => a.SessionId == session.SessionId);
+                    if (affectedSession.GameId == gameId)
+                    {
+                        affectedSession.GameId = null;
+                    }
+                }
 
                 ctx.Games.Remove(entity);
 
