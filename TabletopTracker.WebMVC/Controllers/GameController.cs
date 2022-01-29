@@ -102,6 +102,29 @@ namespace TabletopTracker.WebMVC.Controllers
             return View();
         }
 
+        [ActionName("Delete")]
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateGameService();
+            var model = svc.GetGameById(id);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var service = CreateGameService();
+
+            service.DeleteGame(id);
+
+            TempData["SaveResult"] = "Your game was deleted.";
+
+            return RedirectToAction("Index");
+        }
+
         private GameService CreateGameService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());

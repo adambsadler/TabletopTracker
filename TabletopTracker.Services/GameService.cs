@@ -98,5 +98,17 @@ namespace TabletopTracker.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
+        public bool DeleteGame(int gameId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Games.Single(e => e.GameId == gameId && e.OwnerId == _userId);
+
+                ctx.Games.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
