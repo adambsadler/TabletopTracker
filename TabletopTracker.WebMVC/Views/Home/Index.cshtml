@@ -2,8 +2,14 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
+<div class="cover">
+    <h1 class="cover-header">Tabletop Tracker</h1>
+    <p class="subheader">Manage your collection of tabletop games and document your favorite game nights.</p>
+    <p class="subheader">Create an account or login to get started!</p>
+</div>
+
+@*<div class="jumbotron">
+    <h1>Tabletop Tracker</h1>
     <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
     <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
@@ -28,4 +34,24 @@
         <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
-</div>
+</div>*@
+
+<style>
+    .cover {
+        padding: 300px 0;
+        text-align: center;
+        margin: auto;
+        
+    }
+
+    .cover-header {
+        font-size: 48px;
+        font-family: 'Frutiger LT Std';
+    }
+
+    .subheader {
+        font-size: 16px;
+        font-family: 'Frutiger LT Std';
+        font-weight: bold;
+    }
+</style>
