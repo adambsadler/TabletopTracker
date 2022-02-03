@@ -1,14 +1,19 @@
 ﻿@model IEnumerable<TabletopTracker.Models.Category.CategoryListItem>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Categories";
 }
 
-<h2>Index</h2>
+<div class="cover">
+    <h1 class="cover-header">@ViewBag.Title</h1>
+    <p class="subheader">Organize your games by category.</p>
+    <br />
+    <p>@Html.ActionLink("Add a Category", "Create", null, new { @class = "btn btn-success " })</p>
+</div>
 
-<p>
+@*<p>
     @Html.ActionLink("Create New", "Create")
-</p>
+</p>*@
 
 @if (TempData.ContainsKey("SaveResult"))
 {
@@ -42,11 +47,30 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.CategoryId }) |
-                @Html.ActionLink("Details", "Details", new { id=item.CategoryId }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.CategoryId })
+                @Html.ActionLink("Edit", "Edit", new { id=item.CategoryId }, new { @class = "btn btn-warning " })
+                @Html.ActionLink("Details", "Details", new { id=item.CategoryId }, new { @class = "btn btn-primary " })
+                @Html.ActionLink("Delete", "Delete", new { id=item.CategoryId }, new { @class = "btn btn-danger " })
             </td>
         </tr>
     }
 
 </table>
+
+<style>
+    .cover {
+        padding: 25px 0;
+        text-align: center;
+        margin: auto;
+    }
+
+    .cover-header {
+        font-size: 48px;
+        font-family: 'Frutiger LT Std';
+    }
+
+    .subheader {
+        font-size: 16px;
+        font-family: 'Frutiger LT Std';
+        font-weight: bold;
+    }
+</style>
