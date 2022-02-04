@@ -1,13 +1,16 @@
 ﻿@model TabletopTracker.Models.Publisher.PublisherDetail
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Publisher Details";
 }
 
-<h2>Details</h2>
+<div class="cover">
+    <h1 class="cover-header">@ViewBag.Title</h1>
+    <p class="subheader">View the details of a publisher in your collection.</p>
+    <p>@Html.ActionLink("Back to Your Publishers", "Index", null, new { @class = "btn btn-primary" })</p>
+</div>
 
 <div>
-    <h4>PublisherDetail</h4>
     <hr />
     <dl class="dl-horizontal">
         @Html.HiddenFor(model => model.PublisherId)
@@ -30,7 +33,26 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.PublisherId }) |
-    @Html.ActionLink("Back to List", "Index")
+<p class="text-center">
+    @Html.ActionLink("Edit Publisher", "Edit", new { id = Model.PublisherId }, new { @class = "btn btn-warning " })
+    @*@Html.ActionLink("Back to List", "Index")*@
 </p>
+
+<style>
+    .cover {
+        padding: 25px 0;
+        text-align: center;
+        margin: auto;
+    }
+
+    .cover-header {
+        font-size: 48px;
+        font-family: 'Frutiger LT Std';
+    }
+
+    .subheader {
+        font-size: 16px;
+        font-family: 'Frutiger LT Std';
+        font-weight: bold;
+    }
+</style>
