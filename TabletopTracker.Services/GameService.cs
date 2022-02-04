@@ -68,7 +68,58 @@ namespace TabletopTracker.Services
             {
                 var entity =
                     ctx.Games.Single(e => e.GameId == id && e.OwnerId == _userId);
-                return new GameDetail
+
+                if(entity.CategoryId != null && entity.PublisherId != null)
+                {
+                    var publisher = ctx.Publishers.Single(p => p.PublisherId == entity.PublisherId && p.OwnerId == _userId);
+                    var category = ctx.Categories.Single(c => c.CategoryId == entity.CategoryId && c.OwnerId == _userId);
+                    return new GameDetail
+                    {
+                        GameId = entity.GameId,
+                        Title = entity.Title,
+                        Category = category.Name,
+                        CategoryId = entity.CategoryId,
+                        Publisher = publisher.Name,
+                        PublisherId = entity.PublisherId,
+                        MinPlayers = entity.MinPlayers,
+                        MaxPlayers = entity.MaxPlayers,
+                        HavePlayed = entity.HavePlayed,
+                        Rating = entity.Rating
+                    };
+                }
+                else if (entity.PublisherId != null)
+                {
+                    var publisher = ctx.Publishers.Single(p => p.PublisherId == entity.PublisherId && p.OwnerId == _userId);
+                    return new GameDetail
+                    {
+                        GameId = entity.GameId,
+                        Title = entity.Title,
+                        CategoryId = entity.CategoryId,
+                        Publisher = publisher.Name,
+                        PublisherId = entity.PublisherId,
+                        MinPlayers = entity.MinPlayers,
+                        MaxPlayers = entity.MaxPlayers,
+                        HavePlayed = entity.HavePlayed,
+                        Rating = entity.Rating
+                    };
+                }
+                else if (entity.CategoryId != null)
+                {
+                    var category = ctx.Categories.Single(c => c.CategoryId == entity.CategoryId && c.OwnerId == _userId);
+                    return new GameDetail
+                    {
+                        GameId = entity.GameId,
+                        Title = entity.Title,
+                        Category = category.Name,
+                        CategoryId = entity.CategoryId,
+                        PublisherId = entity.PublisherId,
+                        MinPlayers = entity.MinPlayers,
+                        MaxPlayers = entity.MaxPlayers,
+                        HavePlayed = entity.HavePlayed,
+                        Rating = entity.Rating
+                    };
+                }
+                else return new GameDetail
                 {
                     GameId = entity.GameId,
                     Title = entity.Title,
