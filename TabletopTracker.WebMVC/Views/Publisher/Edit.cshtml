@@ -1,10 +1,14 @@
 ﻿@model TabletopTracker.Models.Publisher.PublisherEdit
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edit Publisher";
 }
 
-<h2>Edit</h2>
+<div class="cover">
+    <h1 class="cover-header">@ViewBag.Title</h1>
+    <p class="subheader">Edit a publisher in your collection.</p>
+    <p>@Html.ActionLink("Back to Your Publishers", "Index", null, new { @class = "btn btn-primary" })</p>
+</div>
 
 
 @using (Html.BeginForm())
@@ -12,7 +16,6 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>PublisherEdit</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.PublisherId)
@@ -35,16 +38,35 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-success" />
             </div>
         </div>
     </div>
 }
 
-<div>
+@*<div>
     @Html.ActionLink("Back to List", "Index")
-</div>
+</div>*@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+<style>
+    .cover {
+        padding: 25px 0;
+        text-align: center;
+        margin: auto;
+    }
+
+    .cover-header {
+        font-size: 48px;
+        font-family: 'Frutiger LT Std';
+    }
+
+    .subheader {
+        font-size: 16px;
+        font-family: 'Frutiger LT Std';
+        font-weight: bold;
+    }
+</style>
