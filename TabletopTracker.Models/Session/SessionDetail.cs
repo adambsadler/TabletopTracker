@@ -11,6 +11,7 @@ namespace TabletopTracker.Models.Session
     {
         public int SessionId { get; set; }
         [Display(Name = "Game Played")]
+        public string Game { get; set; }
         public int? GameId { get; set; }
         public DateTimeOffset Date { get; set; }
         public string Players { get; set; }

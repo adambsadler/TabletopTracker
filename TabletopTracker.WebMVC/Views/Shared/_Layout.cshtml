@@ -17,11 +17,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Tabletop Tracker", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Games", "Index", "Game")</li>
@@ -30,7 +30,7 @@
                         <li>@Html.ActionLink("Sessions", "Index", "Session")</li>
                     }
                     <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @*<li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -38,8 +38,8 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
+        @*<hr />*@
+        <footer class="text-center navbar-fixed-bottom">
             <p>&copy; @DateTime.Now.Year - Tabletop Tracker by Adam Sadler</p>
         </footer>
     </div>
@@ -49,3 +49,9 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
+<style>
+    .navbar {
+        background-color: darkblue;
+    }
+</style>

@@ -15,9 +15,9 @@ namespace TabletopTracker.Models.Game
         public string CategoryName { get; set; }
         [Display(Name = "Publisher")]
         public string PublisherName { get; set; }
-        [Display(Name = "Minimum Player Count")]
+        [Display(Name = "Min. Players")]
         public int MinPlayers { get; set; }
-        [Display(Name = "Maximum Player Count")]
+        [Display(Name = "Max Players")]
         public int MaxPlayers { get; set; }
         [Display(Name = "Played")]
         public bool HavePlayed { get; set; }

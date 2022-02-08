@@ -12,8 +12,10 @@ namespace TabletopTracker.Models.Game
         public int GameId { get; set; }
         public string Title { get; set; }
         [Display(Name = "Category")]
+        public string Category { get; set; }
         public int? CategoryId { get; set; }
         [Display(Name = "Publisher")]
+        public string Publisher { get; set; }
         public int? PublisherId { get; set; }
         [Display(Name = "Minimum Player Count")]
         public int MinPlayers { get; set; }

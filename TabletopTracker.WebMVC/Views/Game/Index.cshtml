@@ -1,14 +1,18 @@
 ﻿@model IEnumerable<TabletopTracker.Models.Game.GameListItem>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Games";
 }
 
-<h2>Index</h2>
+<div class="cover">
+    <h1 class="cover-header">@ViewBag.Title</h1>
+    <p class="subheader">Manage your collection of games.</p>
+    <p>@Html.ActionLink("Add a Game", "Create", null, new { @class = "btn btn-success "})</p>
+</div>
 
-<p>
+@*<p>
     @Html.ActionLink("Create New", "Create")
-</p>
+</p>*@
 
 @if (TempData.ContainsKey("SaveResult"))
 {
@@ -32,16 +36,16 @@
         <th>
             @Html.DisplayNameFor(model => model.PublisherName)
         </th>
-        <th>
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.MinPlayers)
         </th>
-        <th>
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.MaxPlayers)
         </th>
-        <th>
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.HavePlayed)
         </th>
-        <th>
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.Rating)
         </th>
         <th></th>
@@ -59,24 +63,43 @@
             <td>
                 @Html.DisplayFor(modelItem => item.PublisherName)
             </td>
-            <td>
+            <td class="text-center">
                 @Html.DisplayFor(modelItem => item.MinPlayers)
             </td>
-            <td>
+            <td class="text-center">
                 @Html.DisplayFor(modelItem => item.MaxPlayers)
             </td>
-            <td>
+            <td class="text-center">
                 @Html.DisplayFor(modelItem => item.HavePlayed)
             </td>
-            <td>
+            <td class="text-center">
                 @Html.DisplayFor(modelItem => item.Rating)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.GameId }) |
-                @Html.ActionLink("Details", "Details", new { id=item.GameId }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.GameId })
+                @Html.ActionLink("Edit", "Edit", new { id=item.GameId }, new { @class = "btn btn-warning " })
+                @Html.ActionLink("Details", "Details", new { id=item.GameId }, new { @class = "btn btn-primary " })
+                @Html.ActionLink("Delete", "Delete", new { id=item.GameId }, new { @class = "btn btn-danger "})
             </td>
         </tr>
     }
 
 </table>
+
+<style>
+    .cover {
+        padding: 25px 0;
+        text-align: center;
+        margin: auto;
+    }
+
+    .cover-header {
+        font-size: 48px;
+        font-family: 'Frutiger LT Std';
+    }
+
+    .subheader {
+        font-size: 16px;
+        font-family: 'Frutiger LT Std';
+        font-weight: bold;
+    }
+</style>

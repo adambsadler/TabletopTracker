@@ -1,13 +1,16 @@
 ﻿@model TabletopTracker.Models.Game.GameDetail
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Game Details";
 }
 
-<h2>Details</h2>
+<div class="cover">
+    <h1 class="cover-header">@ViewBag.Title</h1>
+    <p class="subheader">View the details of a game in your collection.</p>
+    <p>@Html.ActionLink("Back to Your Collection", "Index", null, new { @class = "btn btn-primary" })</p>
+</div>
 
 <div>
-    <h4>GameDetail</h4>
     <hr />
     <dl class="dl-horizontal">
         @Html.HiddenFor(model => model.GameId)
@@ -21,19 +24,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CategoryId)
+            @Html.DisplayNameFor(model => model.Category)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CategoryId)
+            @Html.DisplayFor(model => model.Category)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PublisherId)
+            @Html.DisplayNameFor(model => model.Publisher)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PublisherId)
+            @Html.DisplayFor(model => model.Publisher)
         </dd>
 
         <dt>
@@ -70,7 +73,26 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.GameId }) |
-    @Html.ActionLink("Back to List", "Index")
+<p class="text-center">
+    @Html.ActionLink("Edit Game", "Edit", new { id = Model.GameId }, new { @class = "btn btn-warning " })
+    @*@Html.ActionLink("Back to List", "Index")*@
 </p>
+
+<style>
+    .cover {
+        padding: 25px 0;
+        text-align: center;
+        margin: auto;
+    }
+
+    .cover-header {
+        font-size: 48px;
+        font-family: 'Frutiger LT Std';
+    }
+
+    .subheader {
+        font-size: 16px;
+        font-family: 'Frutiger LT Std';
+        font-weight: bold;
+    }
+</style>

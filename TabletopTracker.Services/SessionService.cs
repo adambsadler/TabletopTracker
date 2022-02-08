@@ -64,9 +64,12 @@ namespace TabletopTracker.Services
             {
                 var entity =
                     ctx.Sessions.Single(e => e.SessionId == id && e.OwnerId == _userId);
+                var game = ctx.Games.Single(g => g.GameId == entity.GameId && g.OwnerId == _userId);
                 return new SessionDetail
                 {
                     SessionId = entity.SessionId,
+                    Game = game.Title,
+                    GameId = entity.GameId,
                     Date = entity.Date,
                     Players = entity.Players,
                     Notes = entity.Notes
