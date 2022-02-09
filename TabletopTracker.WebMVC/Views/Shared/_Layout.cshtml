@@ -9,7 +9,39 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">Tabletop Tracker</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="@Url.Action("Index", "Game")">Games</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="@Url.Action("Index", "Category")">Categories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="@Url.Action("Index", "Publisher")">Publishers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="@Url.Action("Index", "Session")">Sessions</a>
+                        </li>
+                    }
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("About", "Home")">About</a>
+                    </li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </nav>
+
+    <!--<div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -20,26 +52,26 @@
                 @Html.ActionLink("Tabletop Tracker", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav">-->
                     @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
-                    @if (User.Identity.IsAuthenticated)
+                    <!--@if (User.Identity.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Games", "Index", "Game")</li>
                         <li>@Html.ActionLink("Categories", "Index", "Category")</li>
                         <li>@Html.ActionLink("Publishers", "Index", "Publisher")</li>
                         <li>@Html.ActionLink("Sessions", "Index", "Session")</li>
                     }
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>-->
                     @*<li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
-                </ul>
+                <!--</ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
-    </div>
+    </div>-->
     <div class="container body-content">
         @RenderBody()
         @*<hr />*@
-        <footer class="text-center navbar-fixed-bottom">
+        <footer class="text-center mt-auto fixed-bottom">
             <p>&copy; @DateTime.Now.Year - Tabletop Tracker by Adam Sadler</p>
         </footer>
     </div>
@@ -52,6 +84,6 @@
 
 <style>
     .navbar {
-        background-color: darkblue;
+        padding: 10px;
     }
 </style>
