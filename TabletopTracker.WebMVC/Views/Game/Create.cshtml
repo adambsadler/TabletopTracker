@@ -11,82 +11,61 @@
 </div>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-  
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <hr />
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <form>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.PublisherId, htmlAttributes: new { @class = "control-label" })
+                        @Html.DropDownListFor(m => Model.PublisherId, ViewBag.Publishers as IEnumerable<SelectListItem>, "Select Publisher", htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.PublisherId, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.CategoryId, htmlAttributes: new { @class = "control-label" })
+                        @Html.DropDownListFor(m => Model.CategoryId, ViewBag.Categories as IEnumerable<SelectListItem>, "Select Category", htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.MinPlayers, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.MinPlayers, new { htmlAttributes = new { @class = "form-control", @min = "1" } })
+                        @Html.ValidationMessageFor(model => model.MinPlayers, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.MaxPlayers, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.MaxPlayers, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.MaxPlayers, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="row mb-3 justify-content-center">
+                        @Html.LabelFor(model => model.HavePlayed, htmlAttributes: new { @class = "control-label col-3" })
+                        <div class="col-9 form-check">
+                            @Html.EditorFor(model => model.HavePlayed)
+                            @Html.ValidationMessageFor(model => model.HavePlayed, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.Rating, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Rating, new { htmlAttributes = new { @class = "form-control", @min = "1", @max = "10" } })
+                        @Html.ValidationMessageFor(model => model.Rating, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="text-center mb-5">
+                        <button type="submit" class="btn btn-success">Create</button>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.PublisherId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(m => Model.PublisherId, ViewBag.Publishers as IEnumerable<SelectListItem>, "Select Publisher", htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.PublisherId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CategoryId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(m => Model.CategoryId, ViewBag.Categories as IEnumerable<SelectListItem>, "Select Category", htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.MinPlayers, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MinPlayers, new { htmlAttributes = new { @class = "form-control", @min = "1" } })
-                @Html.ValidationMessageFor(model => model.MinPlayers, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.MaxPlayers, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MaxPlayers, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MaxPlayers, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.HavePlayed, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.HavePlayed)
-                    @Html.ValidationMessageFor(model => model.HavePlayed, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Rating, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Rating, new { htmlAttributes = new { @class = "form-control", @min = "1", @max = "10" } })
-                @Html.ValidationMessageFor(model => model.Rating, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-success" />
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 }
-
-@*<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>*@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
@@ -109,5 +88,4 @@
         font-family: 'Frutiger LT Std';
         font-weight: bold;
     }
-
 </style>
