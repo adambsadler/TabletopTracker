@@ -47,7 +47,8 @@ namespace TabletopTracker.Services
                             {
                                 CategoryId = e.CategoryId,
                                 Name = e.Name,
-                                Description = e.Description
+                                Description = e.Description,
+                                GameCount = e.Games.Count
                             }
                         );
 

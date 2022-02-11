@@ -30,6 +30,7 @@
                         @Html.DisplayFor(modelItem => item.Name)
                     </h3>
                     <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
+                    <p class="card-text mt-3"><b>Games in collection:</b> @Html.DisplayFor(modelItem => item.GameCount)</p>
                     <div class="row justify-content-center">
                         <p class="col">@Html.ActionLink("Edit", "Edit", new { id = item.CategoryId }, new { @class = "btn btn-warning " })</p>
                         <p class="col-md-auto">@Html.ActionLink("Details", "Details", new { id = item.CategoryId }, new { @class = "btn btn-primary " })</p>
