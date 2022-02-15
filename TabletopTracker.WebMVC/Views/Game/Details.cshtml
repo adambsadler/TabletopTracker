@@ -10,7 +10,31 @@
     <p>@Html.ActionLink("Back to Your Collection", "Index", null, new { @class = "btn btn-primary" })</p>
 </div>
 
-<div>
+<div class="col-md-6 mb-3 mx-auto">
+    <div class="card text-center shadow-sm">
+        <div class="card-header">
+            <b>Game ID:</b> @Html.DisplayFor(model => model.GameId)
+        </div>
+        <div class="card-body">
+            <h3 class="card-title mb-3">
+                @Html.DisplayFor(model => model.Title)
+            </h3>
+            <h6 class="card-subtitle mb-2"><b>Publisher:</b> @Html.DisplayFor(model => model.Publisher)</h6>
+            <p class="card-text"><b>Category:</b> @Html.DisplayFor(model => model.Category)</p>
+            <p class="card-text"><b>Minimum Player Count:</b> @Html.DisplayFor(model => model.MinPlayers)</p>
+            <p class="card-text"><b>Maximum Player Count:</b> @Html.DisplayFor(model => model.MaxPlayers)</p>
+            <div class="row">
+                <p class="col"><b>Played?</b> @Html.DisplayFor(model => model.HavePlayed)</p>
+                <p class="col"><b>Rating:</b> @Html.DisplayFor(model => model.Rating)</p>
+            </div>
+            <div class="row justify-content-center">
+                <p>@Html.ActionLink("Edit Game", "Edit", new { id = Model.GameId }, new { @class = "btn btn-warning " })</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<div>
     <hr />
     <dl class="dl-horizontal">
         @Html.HiddenFor(model => model.GameId)
@@ -74,9 +98,9 @@
     </dl>
 </div>
 <p class="text-center">
-    @Html.ActionLink("Edit Game", "Edit", new { id = Model.GameId }, new { @class = "btn btn-warning " })
+    @Html.ActionLink("Edit Game", "Edit", new { id = Model.GameId }, new { @class = "btn btn-warning " })-->
     @*@Html.ActionLink("Back to List", "Index")*@
-</p>
+<!--</p>-->
 
 <style>
     .cover {
