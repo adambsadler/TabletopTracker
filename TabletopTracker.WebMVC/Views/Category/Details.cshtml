@@ -10,33 +10,22 @@
     <p>@Html.ActionLink("Back to Your Categories", "Index", null, new { @class = "btn btn-primary" })</p>
 </div>
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        @Html.HiddenFor(model => model.CategoryId)
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-    </dl>
+<div class="col-md-6 mb-3 mx-auto">
+    <div class="card text-center shadow-sm">
+        <div class="card-header">
+            <b>Gategory ID:</b> @Html.DisplayFor(model => model.CategoryId)
+        </div>
+        <div class="card-body">
+            <h3 class="card-title mb-3">
+                @Html.DisplayFor(model => model.Name)
+            </h3>
+            <p class="card-text"><b>@Html.DisplayNameFor(model => model.Description):</b> @Html.DisplayFor(model => model.Description)</p>
+            <div class="row justify-content-center">
+                <p>@Html.ActionLink("Edit Category", "Edit", new { id = Model.CategoryId }, new { @class = "btn btn-warning " })</p>
+            </div>
+        </div>
+    </div>
 </div>
-<p class="text-center">
-    @Html.ActionLink("Edit Category", "Edit", new { id = Model.CategoryId }, new { @class = "btn btn-warning " })
-    @*@Html.ActionLink("Back to List", "Index")*@
-</p>
 
 <style>
     .cover {
