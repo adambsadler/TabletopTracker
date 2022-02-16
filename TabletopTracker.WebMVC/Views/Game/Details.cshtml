@@ -19,88 +19,18 @@
             <h3 class="card-title mb-3">
                 @Html.DisplayFor(model => model.Title)
             </h3>
-            <h6 class="card-subtitle mb-2"><b>Publisher:</b> @Html.DisplayFor(model => model.Publisher)</h6>
-            <p class="card-text"><b>Category:</b> @Html.DisplayFor(model => model.Category)</p>
-            <p class="card-text"><b>Minimum Player Count:</b> @Html.DisplayFor(model => model.MinPlayers)</p>
-            <p class="card-text"><b>Maximum Player Count:</b> @Html.DisplayFor(model => model.MaxPlayers)</p>
-            <div class="row">
-                <p class="col"><b>Played?</b> @Html.DisplayFor(model => model.HavePlayed)</p>
-                <p class="col"><b>Rating:</b> @Html.DisplayFor(model => model.Rating)</p>
-            </div>
+            <p class="card-text"><b>@Html.DisplayNameFor(model => model.Publisher):</b> @Html.DisplayFor(model => model.Publisher)</p>
+            <p class="card-text"><b>@Html.DisplayNameFor(model => model.Category):</b> @Html.DisplayFor(model => model.Category)</p>
+            <p class="card-text"><b>@Html.DisplayNameFor(model => model.MinPlayers):</b> @Html.DisplayFor(model => model.MinPlayers)</p>
+            <p class="card-text"><b>@Html.DisplayNameFor(model => model.MaxPlayers):</b> @Html.DisplayFor(model => model.MaxPlayers)</p>
+            <p class="card-text"><b>@Html.DisplayNameFor(model => model.HavePlayed)?</b> @Html.DisplayFor(model => model.HavePlayed)</p>
+            <p class="card-text"><b>@Html.DisplayNameFor(model => model.Rating):</b> @Html.DisplayFor(model => model.Rating)</p>
             <div class="row justify-content-center">
                 <p>@Html.ActionLink("Edit Game", "Edit", new { id = Model.GameId }, new { @class = "btn btn-warning " })</p>
             </div>
         </div>
     </div>
 </div>
-
-<!--<div>
-    <hr />
-    <dl class="dl-horizontal">
-        @Html.HiddenFor(model => model.GameId)
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Category)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Publisher)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Publisher)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MinPlayers)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MinPlayers)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MaxPlayers)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MaxPlayers)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.HavePlayed)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HavePlayed)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Rating)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Rating)
-        </dd>
-
-    </dl>
-</div>
-<p class="text-center">
-    @Html.ActionLink("Edit Game", "Edit", new { id = Model.GameId }, new { @class = "btn btn-warning " })-->
-    @*@Html.ActionLink("Back to List", "Index")*@
-<!--</p>-->
 
 <style>
     .cover {
