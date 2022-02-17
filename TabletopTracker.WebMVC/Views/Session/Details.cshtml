@@ -10,49 +10,24 @@
     <p>@Html.ActionLink("Back to Your Sessions", "Index", null, new { @class = "btn btn-primary" })</p>
 </div>
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        @Html.HiddenFor(model => model.SessionId)
-        
-        <dt>
-            @Html.DisplayNameFor(model => model.Game)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Game)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Players)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Players)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Notes)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Notes)
-        </dd>
-
-    </dl>
+<div class="col-md-6 mb-3 mx-auto">
+    <div class="card text-center shadow-sm">
+        <div class="card-header">
+            <b>Session ID:</b> @Html.DisplayFor(model => model.SessionId)
+        </div>
+        <div class="card-body">
+            <h3 class="card-title mb-3">
+                @Html.DisplayFor(model => model.Game)
+            </h3>
+            <p class="card-text"><b>@Html.DisplayNameFor(model => model.Date):</b> @Html.DisplayFor(model => model.Date)</p>
+            <p class="card-text"><b>@Html.DisplayNameFor(model => model.Players):</b> @Html.DisplayFor(model => model.Players)</p>
+            <p class="card-text"><b>@Html.DisplayNameFor(model => model.Notes):</b> @Html.DisplayFor(model => model.Notes)</p>
+            <div class="row justify-content-center">
+                <p>@Html.ActionLink("Edit Session", "Edit", new { id = Model.SessionId }, new { @class = "btn btn-warning " })</p>
+            </div>
+        </div>
+    </div>
 </div>
-<p class="text-center">
-    @Html.ActionLink("Edit Session", "Edit", new { id = Model.SessionId }, new { @class = "btn btn-warning " })
-    @*@Html.ActionLink("Back to List", "Index")*@
-</p>
 
 <style>
     .cover {

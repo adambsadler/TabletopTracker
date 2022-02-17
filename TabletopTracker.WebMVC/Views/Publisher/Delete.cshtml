@@ -10,37 +10,27 @@
     <p>@Html.ActionLink("Back to Your Publishers", "Index", null, new { @class = "btn btn-primary" })</p>
 </div>
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        @Html.HiddenFor(model => model.PublisherId)
-        
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Website)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Website)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color text-center">
-            <input type="submit" value="Delete" class="btn btn-danger" />
-            @*@Html.ActionLink("Back to List", "Index")*@
+<div class="col-md-6 mb-3 mx-auto">
+    <div class="card text-center shadow-sm">
+        <div class="card-header">
+            <b>Publisher ID:</b> @Html.DisplayFor(model => model.PublisherId)
         </div>
-    }
+        <div class="card-body">
+            <h3 class="card-title mb-3">
+                @Html.DisplayFor(model => model.Name)
+            </h3>
+            <p class="card-text"><b>@Html.DisplayNameFor(model => model.Website):</b> <a href="@Html.DisplayFor(model => model.Website)" target="_blank">@Html.DisplayFor(model => model.Website)</a></p>
+            <p class="card-text">Are you sure you want to delete this publisher from your collection?</p>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color text-center">
+                    <input type="submit" value="Delete" class="btn btn-danger" />
+                </div>
+            }
+        </div>
+    </div>
 </div>
 
 <style>
