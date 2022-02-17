@@ -3,7 +3,7 @@ namespace TabletopTracker.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialMigration : DbMigration
+    public partial class initalmigration : DbMigration
     {
         public override void Up()
         {
@@ -12,7 +12,7 @@ namespace TabletopTracker.Data.Migrations
                 c => new
                     {
                         CategoryId = c.Int(nullable: false, identity: true),
-                        guid = c.Guid(nullable: false),
+                        OwnerId = c.Guid(nullable: false),
                         Name = c.String(nullable: false, maxLength: 50),
                         Description = c.String(maxLength: 500),
                     })
@@ -43,7 +43,7 @@ namespace TabletopTracker.Data.Migrations
                 c => new
                     {
                         PublisherId = c.Int(nullable: false, identity: true),
-                        guid = c.Guid(nullable: false),
+                        OwnerId = c.Guid(nullable: false),
                         Name = c.String(nullable: false, maxLength: 50),
                         Website = c.String(),
                     })
@@ -77,15 +77,15 @@ namespace TabletopTracker.Data.Migrations
                 "dbo.Session",
                 c => new
                     {
-                        Sessionid = c.Int(nullable: false, identity: true),
-                        guid = c.Guid(nullable: false),
-                        GameId = c.Int(nullable: false),
-                        Date = c.DateTime(nullable: false),
+                        SessionId = c.Int(nullable: false, identity: true),
+                        OwnerId = c.Guid(nullable: false),
+                        GameId = c.Int(),
+                        Date = c.DateTimeOffset(nullable: false, precision: 7),
                         Players = c.String(maxLength: 500),
                         Notes = c.String(maxLength: 500),
                     })
-                .PrimaryKey(t => t.Sessionid)
-                .ForeignKey("dbo.Game", t => t.GameId, cascadeDelete: true)
+                .PrimaryKey(t => t.SessionId)
+                .ForeignKey("dbo.Game", t => t.GameId)
                 .Index(t => t.GameId);
             
             CreateTable(

@@ -57,17 +57,9 @@
     <Compile Include="Category.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202201281614030_InitialMigration.cs" />
-    <Compile Include="Migrations\202201281614030_InitialMigration.Designer.cs">
-      <DependentUpon>202201281614030_InitialMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202201291609494_ModifiedCategory.cs" />
-    <Compile Include="Migrations\202201291609494_ModifiedCategory.Designer.cs">
-      <DependentUpon>202201291609494_ModifiedCategory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202201292016294_SessionAdded.cs" />
-    <Compile Include="Migrations\202201292016294_SessionAdded.Designer.cs">
-      <DependentUpon>202201292016294_SessionAdded.cs</DependentUpon>
+    <Compile Include="Migrations\202202170132447_initalmigration.cs" />
+    <Compile Include="Migrations\202202170132447_initalmigration.Designer.cs">
+      <DependentUpon>202202170132447_initalmigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -79,14 +71,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202201281614030_InitialMigration.resx">
-      <DependentUpon>202201281614030_InitialMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202201291609494_ModifiedCategory.resx">
-      <DependentUpon>202201291609494_ModifiedCategory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202201292016294_SessionAdded.resx">
-      <DependentUpon>202201292016294_SessionAdded.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202202170132447_initalmigration.resx">
+      <DependentUpon>202202170132447_initalmigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

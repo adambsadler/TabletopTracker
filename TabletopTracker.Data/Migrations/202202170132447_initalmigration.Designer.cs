@@ -7,13 +7,13 @@ namespace TabletopTracker.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class ModifiedCategory : IMigrationMetadata
+    public sealed partial class initalmigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ModifiedCategory));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initalmigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "202201291609494_ModifiedCategory"; }
+            get { return "202202170132447_initalmigration"; }
         }
         
         string IMigrationMetadata.Source
