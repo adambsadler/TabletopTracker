@@ -14,4 +14,4 @@ As my final project for my Software Development Red Badge at Eleven Fifty Academ
 
 Before a user logs in, all they will have access to is the home page and the About page. After registering an account and logging in, the other options become available.
 
-In addition, we were expected to deploy this application to Azure, which can be found here: [Azure Deployment](https://tabletoptracker.azurewebsites.net/)
+In addition, this application was deployed to Azure, but that account is not currently active at this time.
